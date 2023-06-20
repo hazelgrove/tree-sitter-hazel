@@ -20,12 +20,11 @@ module.exports = grammar({
     rules: {
         program: $ => ($.expression),
 
-        _ident: $ => /[A-Za-z][A-Za-z0-9_']*/,
+        ident: $ => /[A-Za-z][A-Za-z0-9_']*/,
 
         //basic structures:
 
         expression: $ => choice(
-            $.var,
             $.let,
             $.int_lit,
             $.float_lit,
@@ -39,10 +38,10 @@ module.exports = grammar({
             $.case,
             $.test,
             $.list,
+            $.ident,
         ),
 
         pat: $ => choice(
-            $.var,
             $.typeann,
             $.wildcard,
             $.int_lit,
@@ -52,7 +51,8 @@ module.exports = grammar({
             $.tuple_pat,
             $.list_pat,
             $.wildcard,
-            $.as_pat
+            $.as_pat,
+            $.ident,
         ),
 
         type: $ => choice(
@@ -146,8 +146,6 @@ module.exports = grammar({
             $.bitwise_or,
             $.logical_or,
         ),
-
-        var: $ => $._ident,
 
         plus: $ => prec.left(5, seq(
             $.expression,
@@ -361,7 +359,7 @@ module.exports = grammar({
 
         //application
         ap: $ => prec.left(1, seq(
-            $.expression,
+            field("func", $.expression),
             '(',
             commaSep($.expression),
             ')'

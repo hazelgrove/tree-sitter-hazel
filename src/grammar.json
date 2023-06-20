@@ -5,17 +5,13 @@
       "type": "SYMBOL",
       "name": "expression"
     },
-    "_ident": {
+    "ident": {
       "type": "PATTERN",
       "value": "[A-Za-z][A-Za-z0-9_']*"
     },
     "expression": {
       "type": "CHOICE",
       "members": [
-        {
-          "type": "SYMBOL",
-          "name": "var"
-        },
         {
           "type": "SYMBOL",
           "name": "let"
@@ -67,16 +63,16 @@
         {
           "type": "SYMBOL",
           "name": "list"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ident"
         }
       ]
     },
     "pat": {
       "type": "CHOICE",
       "members": [
-        {
-          "type": "SYMBOL",
-          "name": "var"
-        },
         {
           "type": "SYMBOL",
           "name": "typeann"
@@ -116,6 +112,10 @@
         {
           "type": "SYMBOL",
           "name": "as_pat"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ident"
         }
       ]
     },
@@ -456,10 +456,6 @@
           "name": "logical_or"
         }
       ]
-    },
-    "var": {
-      "type": "SYMBOL",
-      "name": "_ident"
     },
     "plus": {
       "type": "PREC_LEFT",
@@ -1199,8 +1195,12 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "expression"
+            "type": "FIELD",
+            "name": "func",
+            "content": {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
           },
           {
             "type": "STRING",

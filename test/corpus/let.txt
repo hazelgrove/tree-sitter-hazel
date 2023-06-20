@@ -11,13 +11,13 @@ x + 1
   (expression
     (let
       (pat
-        (var))
+        (ident))
       (expression
         (int_lit))
       (expression
         (infix_exp
           (plus
             (expression
-              (var))
+              (ident))
             (expression
               (int_lit))))))))

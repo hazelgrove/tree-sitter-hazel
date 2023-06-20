@@ -2,10 +2,21 @@
   {
     "type": "ap",
     "named": true,
-    "fields": {},
+    "fields": {
+      "func": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "expression",
@@ -172,6 +183,10 @@
           "named": true
         },
         {
+          "type": "ident",
+          "named": true
+        },
+        {
           "type": "if",
           "named": true
         },
@@ -201,10 +216,6 @@
         },
         {
           "type": "tuple_exp",
-          "named": true
-        },
-        {
-          "type": "var",
           "named": true
         }
       ]
@@ -688,6 +699,10 @@
           "named": true
         },
         {
+          "type": "ident",
+          "named": true
+        },
+        {
           "type": "int_lit",
           "named": true
         },
@@ -705,10 +720,6 @@
         },
         {
           "type": "typeann",
-          "named": true
-        },
-        {
-          "type": "var",
           "named": true
         },
         {
@@ -935,11 +946,6 @@
     }
   },
   {
-    "type": "var",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "\n",
     "named": false
   },
@@ -1130,6 +1136,10 @@
   {
     "type": "fun",
     "named": false
+  },
+  {
+    "type": "ident",
+    "named": true
   },
   {
     "type": "if",
