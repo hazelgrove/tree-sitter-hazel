@@ -12,6 +12,11 @@ module.exports = grammar({
     name: 'hazel',
     conflicts: $ => [[$.expression, $.pat], [$.tuple_pat, $.tuple_exp], [$.list, $.list_pat]],
 
+    extras: $ => [
+        /\s/,
+        $.comment,
+    ],
+
     rules: {
         program: $ => ($.expression),
 
@@ -58,6 +63,9 @@ module.exports = grammar({
             $.tuple_type,
             $.arrow_type,
         ),
+
+        comment: $ =>
+            token(seq("#", /.*/)),
 
         //types:
 
