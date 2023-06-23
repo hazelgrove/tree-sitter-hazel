@@ -1,0 +1,18 @@
+============
+Assign Infix Expression
+============
+
+foo = bar
+
+--------
+
+(program 
+    (expression 
+        (infix_exp 
+            (assign 
+                (expression (ident))
+                (expression (ident))
+            )
+        )
+    )
+)

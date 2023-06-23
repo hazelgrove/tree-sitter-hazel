@@ -1,0 +1,18 @@
+============
+Bitwise Or Infix Expression
+============
+
+1010 | 0101
+
+--------
+
+(program 
+    (expression 
+        (infix_exp 
+            (bitwise_or 
+                (expression (int_lit))
+                (expression (int_lit))
+            )
+        )
+    )
+)

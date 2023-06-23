@@ -1,0 +1,18 @@
+============
+Less Than Equals Infix Expression
+============
+
+2 <= 3
+
+--------
+
+(program 
+    (expression 
+        (infix_exp 
+            (less_than_equals 
+                (expression (int_lit))
+                (expression (int_lit))
+            )
+        )
+    )
+)

@@ -1,0 +1,26 @@
+================================================================================
+String Equals Infix Expression
+================================================================================
+
+"hi" $== "hi" $= "hi" $ "hi"
+
+--------------------------------------------------------------------------------
+
+(program
+  (expression
+    (infix_exp
+      (string_equals
+        (expression
+          (string))
+        (expression
+          (infix_exp
+            (string_equals
+              (expression
+                (string))
+              (expression
+                (infix_exp
+                  (string_equals
+                    (expression
+                      (string))
+                    (expression
+                      (string))))))))))))

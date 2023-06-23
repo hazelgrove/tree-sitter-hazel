@@ -1,0 +1,18 @@
+============
+Divide Infix Expression
+============
+
+6 / 3
+
+-------
+
+(program 
+    (expression 
+        (infix_exp 
+            (divide 
+                (expression (int_lit))
+                (expression (int_lit))
+            )
+        )
+    )
+)

@@ -1,0 +1,18 @@
+============
+Substring One Infix Expression
+============
+
+"hello" =. 2
+
+--------
+
+(program 
+    (expression 
+        (infix_exp 
+            (substr1 
+                (expression (string))
+                (expression (int_lit))
+            )
+        )
+    )
+)

@@ -1,0 +1,11 @@
+=======
+Int Literal
+=======
+
+1
+
+--------
+
+(program
+    (expression
+        (int_lit)))

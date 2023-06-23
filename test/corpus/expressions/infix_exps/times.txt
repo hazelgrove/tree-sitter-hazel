@@ -1,0 +1,18 @@
+============
+Times Infix Expression
+============
+
+2 * 3
+
+---------
+
+(program 
+    (expression 
+        (infix_exp 
+            (times 
+                (expression (int_lit))
+                (expression (int_lit))
+            )
+        )
+    )
+)

@@ -1,0 +1,11 @@
+===========
+Boolean Literal
+===========
+
+true
+
+--------
+
+(program
+    (expression
+    (bool_lit)))

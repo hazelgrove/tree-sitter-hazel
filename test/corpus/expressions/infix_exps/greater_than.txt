@@ -1,0 +1,18 @@
+============
+Greater Than Infix Expression
+============
+
+3 > 2
+
+--------
+
+(program 
+    (expression 
+        (infix_exp 
+            (greater_than 
+                (expression (int_lit))
+                (expression (int_lit))
+            )
+        )
+    )
+)

@@ -1,0 +1,18 @@
+============
+Logical Or Infix Expression
+============
+
+true || false
+
+--------
+
+(program 
+    (expression 
+        (infix_exp 
+            (logical_or 
+                (expression (bool_lit))
+                (expression (bool_lit))
+            )
+        )
+    )
+)

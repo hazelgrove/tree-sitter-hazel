@@ -1,0 +1,16 @@
+==========
+Tuple Expression
+==========
+
+(1, 2)
+
+-----
+
+(program
+    (expression 
+        (tuple_exp 
+            (expression (int_lit))
+            (expression (int_lit))
+        )
+    )
+)

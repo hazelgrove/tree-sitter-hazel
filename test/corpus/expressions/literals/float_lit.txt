@@ -1,0 +1,11 @@
+=========
+Float Literal
+=========
+
+1.0
+
+-------
+
+(program 
+    (expression 
+     (float_lit)))

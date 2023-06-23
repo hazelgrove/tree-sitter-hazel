@@ -1,0 +1,18 @@
+============
+Equals Infix Expression
+============
+
+3 == 3
+
+--------
+
+(program 
+    (expression 
+        (infix_exp 
+            (equals 
+                (expression (int_lit))
+                (expression (int_lit))
+            )
+        )
+    )
+)

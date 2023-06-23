@@ -1,0 +1,11 @@
+============
+String Literal
+============
+
+"Hello World"
+
+--------
+
+(program  
+    (expression 
+    (string)))
