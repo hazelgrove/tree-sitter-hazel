@@ -50,7 +50,6 @@ module.exports = grammar({
             $.string,
             $.tuple_pat,
             $.list_pat,
-            $.wildcard,
             $.as_pat,
             $.ident,
         ),

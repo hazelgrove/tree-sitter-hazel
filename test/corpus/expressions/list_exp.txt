@@ -1,0 +1,16 @@
+==========
+List Expression
+==========
+
+[1, 2]
+
+-----
+
+(program
+    (expression 
+        (list 
+            (expression (int_lit))
+            (expression (int_lit))
+        )
+    )
+)

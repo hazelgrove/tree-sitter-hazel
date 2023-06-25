@@ -1,0 +1,30 @@
+================================================================================
+Case Expression
+================================================================================
+
+case (1)
+    | 1 => 0
+    | _ => 2
+end
+
+--------------------------------------------------------------------------------
+
+(program
+  (expression
+    (case
+      (expression
+        (tuple_exp
+          (expression
+            (int_lit))))
+      (rule
+        (pat
+          (int_lit))
+        (rule_exp_op)
+        (expression
+          (int_lit)))
+      (rule
+        (pat
+          (wildcard))
+        (rule_exp_op)
+        (expression
+          (int_lit))))))

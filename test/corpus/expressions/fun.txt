@@ -1,0 +1,36 @@
+================================================================================
+Function Expression
+================================================================================
+
+let things = 
+    fun (x) -> x + 1
+in
+
+things(1)
+
+--------------------------------------------------------------------------------
+
+(program
+  (expression
+    (let
+      (pat
+        (ident))
+      (expression
+        (fun
+          (pat
+            (tuple_pat
+              (pat
+                (ident))))
+          (expression
+            (infix_exp
+              (plus
+                (expression
+                  (ident))
+                (expression
+                  (int_lit)))))))
+      (expression
+        (ap
+          (expression
+            (ident))
+          (expression
+            (int_lit)))))))

@@ -1,0 +1,45 @@
+================================================================================
+As Pattern
+================================================================================
+
+case (1, 2) 
+    | (1, 2) as z => z
+    | _ => (2, 3)
+end
+
+
+--------------------------------------------------------------------------------
+
+(program
+  (expression
+    (case
+      (expression
+        (tuple_exp
+          (expression
+            (int_lit))
+          (expression
+            (int_lit))))
+      (rule
+        (pat
+          (as_pat
+            (pat
+              (tuple_pat
+                (pat
+                  (int_lit))
+                (pat
+                  (int_lit))))
+            (pat
+              (ident))))
+        (rule_exp_op)
+        (expression
+          (ident)))
+      (rule
+        (pat
+          (wildcard))
+        (rule_exp_op)
+        (expression
+          (tuple_exp
+            (expression
+              (int_lit))
+            (expression
+              (int_lit))))))))

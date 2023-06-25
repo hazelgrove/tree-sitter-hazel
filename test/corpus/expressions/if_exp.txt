@@ -1,0 +1,24 @@
+================================================================================
+If Expression
+================================================================================
+
+if (1 == 2) then 3 else 4
+
+--------------------------------------------------------------------------------
+
+(program
+  (expression
+    (if
+      (expression
+        (tuple_exp
+          (expression
+            (infix_exp
+              (equals
+                (expression
+                  (int_lit))
+                (expression
+                  (int_lit)))))))
+      (expression
+        (int_lit))
+      (expression
+        (int_lit)))))

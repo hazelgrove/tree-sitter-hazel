@@ -1,14 +1,18 @@
 # this is a comment
 
 let num : Int = 1 in
-let inc : Int -> Int =
+let add_one : Int -> Int =
     fun x -> x + 1
+in
+
+let mult_and_inc: ((Int, Int)) -> Int = 
+    fun ((num, mult)) -> add_one(num * mult)
 in
 
 let stuff : (Int, Int) -> (Int, Int) = 
     fun (x, y) ->
         case (x, y)
-            | (1, 2) as z => z
+            | (1, 2) as z => (mult_and_inc(z), 0)
             | (0, 0) => (0, 0)
             | _ => (inc(1), 1)
         end
