@@ -11,10 +11,21 @@ in
 
 let stuff : (Int, Int) -> (Int, Int) = 
     fun (x, y) ->
-        case (x, y)
+        case (x + 1, y + 1)
             | (1, 2) as z => (mult_and_inc(z), 0)
             | (0, 0) => (0, 0)
             | _ => (inc(1), 1)
+        end
+in
+
+let stringEquals = "hi" $== "hi" in
+
+let has_two_elements: [Int] -> Bool = 
+    fun xs ->
+        case xs
+            | nil => false
+            | hd::nil => false
+            | a::b::nil => true   
         end
 in
 

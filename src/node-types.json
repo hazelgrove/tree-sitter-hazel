@@ -26,6 +26,21 @@
     }
   },
   {
+    "type": "array_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "arrow_type",
     "named": true,
     "fields": {},
@@ -125,6 +140,36 @@
     }
   },
   {
+    "type": "cons_exp",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cons_pat",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "pat",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "divide",
     "named": true,
     "fields": {},
@@ -203,11 +248,15 @@
           "named": true
         },
         {
-          "type": "list",
+          "type": "list_exp",
           "named": true
         },
         {
-          "type": "string",
+          "type": "nil_exp",
+          "named": true
+        },
+        {
+          "type": "string_lit",
           "named": true
         },
         {
@@ -456,6 +505,10 @@
           "named": true
         },
         {
+          "type": "cons_exp",
+          "named": true
+        },
+        {
           "type": "divide",
           "named": true
         },
@@ -540,7 +593,7 @@
           "named": true
         },
         {
-          "type": "string_equals",
+          "type": "string_lit_equals",
           "named": true
         },
         {
@@ -604,7 +657,7 @@
     }
   },
   {
-    "type": "list",
+    "type": "list_exp",
     "named": true,
     "fields": {},
     "children": {
@@ -679,6 +732,16 @@
     }
   },
   {
+    "type": "nil_exp",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "nil_pat",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "pat",
     "named": true,
     "fields": {},
@@ -692,6 +755,10 @@
         },
         {
           "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "cons_pat",
           "named": true
         },
         {
@@ -711,7 +778,11 @@
           "named": true
         },
         {
-          "type": "string",
+          "type": "nil_pat",
+          "named": true
+        },
+        {
+          "type": "string_lit",
           "named": true
         },
         {
@@ -798,12 +869,12 @@
     }
   },
   {
-    "type": "string",
+    "type": "string_lit",
     "named": true,
     "fields": {}
   },
   {
-    "type": "string_equals",
+    "type": "string_lit_equals",
     "named": true,
     "fields": {},
     "children": {
@@ -915,6 +986,10 @@
       "multiple": false,
       "required": false,
       "types": [
+        {
+          "type": "array_type",
+          "named": true
+        },
         {
           "type": "arrow_type",
           "named": true
@@ -1031,6 +1106,10 @@
   },
   {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "::",
     "named": false
   },
   {
@@ -1155,6 +1234,10 @@
   },
   {
     "type": "let",
+    "named": false
+  },
+  {
+    "type": "nil",
     "named": false
   },
   {

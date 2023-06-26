@@ -10,7 +10,7 @@ function commaSep(rule) {
 
 module.exports = grammar({
     name: 'hazel',
-    conflicts: $ => [[$.expression, $.pat], [$.tuple_pat, $.tuple_exp], [$.list, $.list_pat]],
+    conflicts: $ => [[$.expression, $.pat], [$.tuple_pat, $.tuple_exp], [$.list_exp, $.list_pat], [$.nil_exp, $.nil_pat]],
 
     extras: $ => [
         /\s/,
@@ -29,7 +29,7 @@ module.exports = grammar({
             $.int_lit,
             $.float_lit,
             $.bool_lit,
-            $.string,
+            $.string_lit,
             $.tuple_exp,
             $.infix_exp,
             $.fun,
@@ -37,8 +37,9 @@ module.exports = grammar({
             $.ap,
             $.case,
             $.test,
-            $.list,
+            $.list_exp,
             $.ident,
+            $.nil_exp,
         ),
 
         pat: $ => choice(
@@ -47,11 +48,13 @@ module.exports = grammar({
             $.int_lit,
             $.float_lit,
             $.bool_lit,
-            $.string,
+            $.string_lit,
             $.tuple_pat,
             $.list_pat,
             $.as_pat,
             $.ident,
+            $.cons_pat,
+            $.nil_pat
         ),
 
         type: $ => choice(
@@ -61,13 +64,13 @@ module.exports = grammar({
             'Bool',
             $.tuple_type,
             $.arrow_type,
+            $.array_type,
         ),
 
         comment: $ =>
             token(seq("#", /.*/)),
 
         //types:
-
         tuple_type: $ => seq(
             '(',
             commaSep($.type),
@@ -80,6 +83,12 @@ module.exports = grammar({
             $.type,
         )),
 
+        array_type: $ => seq(
+            '[',
+            $.type,
+            ']',
+        ),
+
         //expressions
 
         test: $ => seq(
@@ -88,7 +97,7 @@ module.exports = grammar({
             'end',
         ),
 
-        list: $ => seq(
+        list_exp: $ => seq(
             '[',
             commaSep($.expression),
             ']',
@@ -105,7 +114,7 @@ module.exports = grammar({
             'false',
         ),
 
-        string: $ => seq(
+        string_lit: $ => seq(
             '"',
             repeat(choice(
                 /[^"\\]/,
@@ -113,6 +122,8 @@ module.exports = grammar({
             )),
             '"'
         ),
+
+        nil_exp: $ => 'nil',
 
         //infix expressions:
 
@@ -124,7 +135,7 @@ module.exports = grammar({
             $.pow,
             $.assign,
             $.equals,
-            $.string_equals,
+            $.string_lit_equals,
             $.less_than,
             $.greater_than,
             $.greater_than_equals,
@@ -144,6 +155,7 @@ module.exports = grammar({
             $.logical_and,
             $.bitwise_or,
             $.logical_or,
+            $.cons_exp,
         ),
 
         plus: $ => prec.left(5, seq(
@@ -194,7 +206,7 @@ module.exports = grammar({
             $.expression,
         )),
 
-        string_equals: $ => prec.right(8, choice(
+        string_lit_equals: $ => prec.right(8, choice(
             seq(
                 $.expression,
                 '$==',
@@ -320,6 +332,12 @@ module.exports = grammar({
             $.expression,
         )),
 
+        cons_exp: $ => prec.right(6, seq(
+            $.expression,
+            '::',
+            $.expression,
+        )),
+
         //tuple expressions:
         tuple_exp: $ => seq(
             '(',
@@ -409,6 +427,14 @@ module.exports = grammar({
             ']',
         ),
 
+        cons_pat: $ => prec.right(6, seq(
+            $.pat,
+            '::',
+            $.pat,
+        )),
+
         wildcard: $ => '_',
+
+        nil_pat: $ => 'nil',
     }
 });

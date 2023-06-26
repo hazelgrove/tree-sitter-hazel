@@ -30,7 +30,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "string"
+          "name": "string_lit"
         },
         {
           "type": "SYMBOL",
@@ -62,11 +62,15 @@
         },
         {
           "type": "SYMBOL",
-          "name": "list"
+          "name": "list_exp"
         },
         {
           "type": "SYMBOL",
           "name": "ident"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "nil_exp"
         }
       ]
     },
@@ -95,7 +99,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "string"
+          "name": "string_lit"
         },
         {
           "type": "SYMBOL",
@@ -107,15 +111,19 @@
         },
         {
           "type": "SYMBOL",
-          "name": "wildcard"
-        },
-        {
-          "type": "SYMBOL",
           "name": "as_pat"
         },
         {
           "type": "SYMBOL",
           "name": "ident"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cons_pat"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "nil_pat"
         }
       ]
     },
@@ -145,6 +153,10 @@
         {
           "type": "SYMBOL",
           "name": "arrow_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "array_type"
         }
       ]
     },
@@ -231,6 +243,23 @@
         ]
       }
     },
+    "array_type": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SYMBOL",
+          "name": "type"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
     "test": {
       "type": "SEQ",
       "members": [
@@ -248,7 +277,7 @@
         }
       ]
     },
-    "list": {
+    "list_exp": {
       "type": "SEQ",
       "members": [
         {
@@ -315,7 +344,7 @@
         }
       ]
     },
-    "string": {
+    "string_lit": {
       "type": "SEQ",
       "members": [
         {
@@ -344,6 +373,10 @@
         }
       ]
     },
+    "nil_exp": {
+      "type": "STRING",
+      "value": "nil"
+    },
     "infix_exp": {
       "type": "CHOICE",
       "members": [
@@ -369,10 +402,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "fpow"
-        },
-        {
-          "type": "SYMBOL",
           "name": "assign"
         },
         {
@@ -381,7 +410,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "string_equals"
+          "name": "string_lit_equals"
         },
         {
           "type": "SYMBOL",
@@ -414,6 +443,10 @@
         {
           "type": "SYMBOL",
           "name": "fdivide"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "fpow"
         },
         {
           "type": "SYMBOL",
@@ -454,6 +487,10 @@
         {
           "type": "SYMBOL",
           "name": "logical_or"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cons_exp"
         }
       ]
     },
@@ -625,7 +662,7 @@
         ]
       }
     },
-    "string_equals": {
+    "string_lit_equals": {
       "type": "PREC_RIGHT",
       "value": 8,
       "content": {
@@ -1063,6 +1100,27 @@
         ]
       }
     },
+    "cons_exp": {
+      "type": "PREC_RIGHT",
+      "value": 6,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": "::"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
     "tuple_exp": {
       "type": "SEQ",
       "members": [
@@ -1436,9 +1494,34 @@
         }
       ]
     },
+    "cons_pat": {
+      "type": "PREC_RIGHT",
+      "value": 6,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "pat"
+          },
+          {
+            "type": "STRING",
+            "value": "::"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "pat"
+          }
+        ]
+      }
+    },
     "wildcard": {
       "type": "STRING",
       "value": "_"
+    },
+    "nil_pat": {
+      "type": "STRING",
+      "value": "nil"
     }
   },
   "extras": [
@@ -1461,8 +1544,12 @@
       "tuple_exp"
     ],
     [
-      "list",
+      "list_exp",
       "list_pat"
+    ],
+    [
+      "nil_exp",
+      "nil_pat"
     ]
   ],
   "precedences": [],
