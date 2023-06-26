@@ -1,16 +1,21 @@
 ================================================================================
-Substring One Infix Expression
+Cons Expression
 ================================================================================
 
-"hello" =. 2
+a::b::nil
 
 --------------------------------------------------------------------------------
 
 (program
   (expression
     (infix_exp
-      (substr1
+      (cons_exp
         (expression
-          (string_lit))
+          (ident))
         (expression
-          (int_lit))))))
+          (infix_exp
+            (cons_exp
+              (expression
+                (ident))
+              (expression
+                (nil_exp)))))))))

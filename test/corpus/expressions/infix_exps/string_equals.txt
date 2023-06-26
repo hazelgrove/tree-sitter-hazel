@@ -9,18 +9,18 @@ String Equals Infix Expression
 (program
   (expression
     (infix_exp
-      (string_equals
+      (string_lit_equals
         (expression
-          (string))
+          (string_lit))
         (expression
           (infix_exp
-            (string_equals
+            (string_lit_equals
               (expression
-                (string))
+                (string_lit))
               (expression
                 (infix_exp
-                  (string_equals
+                  (string_lit_equals
                     (expression
-                      (string))
+                      (string_lit))
                     (expression
-                      (string))))))))))))
+                      (string_lit))))))))))))
