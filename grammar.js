@@ -7,6 +7,10 @@ function commaSep(rule) {
     return optional(commaSep1(rule))
 }
 
+/*
+    Due to the fact that Hazel can have the same syntactic form (in terms of grammar) for patterns and functions, and within Hazel itself this is differentiated through the semantic evaluation, the Hazel treesitter grammar has been written to model this by defining seperate rules for "duplicate" forms' expressions and patterns. Because these duplicate rules share the same grammar, manual conflicts must be added to the treesitter parser. Although this does have the potential to decrease performance, the trade-off in ease-of-use and maintaining a close relationship to the Hazel "forms" (I believe) is well worth it. - Milan Lustig
+*/
+
 
 module.exports = grammar({
     name: 'hazel',
