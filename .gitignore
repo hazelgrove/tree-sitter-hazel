@@ -135,3 +135,6 @@ Cargo.lock
 
 # pnpm
 pnpm-lock.yaml
+
+# OSX
+.DS_Store
