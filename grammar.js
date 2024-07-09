@@ -17,7 +17,6 @@ module.exports = grammar({
     conflicts: $ => [
         [$.expression, $.pat],
         [$.expression, $.ident],
-        // [$.ident, $.expression],
         [$.hole, $.ident],
         [$.tuple_pat, $.tuple_exp],
         [$.list_exp, $.list_pat],
