@@ -14,7 +14,15 @@ function commaSep(rule) {
 
 module.exports = grammar({
     name: 'hazel',
-    conflicts: $ => [[$.expression, $.pat], [$.tuple_pat, $.tuple_exp], [$.list_exp, $.list_pat], [$.nil_exp, $.nil_pat]],
+    conflicts: $ => [
+        [$.expression, $.pat],
+        [$.expression, $.ident],
+        // [$.ident, $.expression],
+        [$.hole, $.ident],
+        [$.tuple_pat, $.tuple_exp],
+        [$.list_exp, $.list_pat],
+        [$.nil_exp, $.nil_pat]
+    ],
 
     extras: $ => [
         /\s/,
@@ -24,10 +32,15 @@ module.exports = grammar({
     rules: {
         program: $ => ($.expression),
 
-        ident: $ => /[A-Za-z][A-Za-z0-9_']*/,
+        //holes:
+        user_hole: $ => '?',
+        filler_hole: $ => '??',
+        hole: $ => choice(
+            $.user_hole,
+            $.filler_hole,
+        ),
 
         //basic structures:
-
         expression: $ => choice(
             $.let,
             $.int_lit,
@@ -44,6 +57,12 @@ module.exports = grammar({
             $.list_exp,
             $.ident,
             $.nil_exp,
+            $.hole
+        ),
+
+        ident: $ => choice(
+            /[A-Za-z]([A-Za-z0-9_'\.]*[A-Za-z0-9_'])?/,
+            $.filler_hole,
         ),
 
         pat: $ => choice(
@@ -58,7 +77,8 @@ module.exports = grammar({
             $.as_pat,
             $.ident,
             $.cons_pat,
-            $.nil_pat
+            $.nil_pat,
+            $.hole
         ),
 
         type: $ => choice(
@@ -69,6 +89,7 @@ module.exports = grammar({
             $.tuple_type,
             $.arrow_type,
             $.array_type,
+            $.hole
         ),
 
         comment: $ =>
@@ -79,6 +100,12 @@ module.exports = grammar({
             '(',
             commaSep($.type),
             ')',
+        ),
+
+        list_type: $ => seq(
+            '[',
+            $.type,
+            ']',
         ),
 
         arrow_type: $ => prec.left(seq(
@@ -106,6 +133,8 @@ module.exports = grammar({
             commaSep($.expression),
             ']',
         ),
+
+        filler: $ => '??',
 
         //literals:
 

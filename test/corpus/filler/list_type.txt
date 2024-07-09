@@ -1,0 +1,29 @@
+================================================================================
+List Type
+================================================================================
+
+let worlds_coolest_list: [String] = 
+    ["hello", "world"] in
+
+worlds_coolest_list
+
+--------------------------------------------------------------------------------
+
+(program
+    (expression
+    (let
+        (pat
+        (typeann
+            (pat
+            (ident))
+            (type
+            (array_type
+                (type)))))
+        (expression
+        (list_exp
+            (expression
+                (string_lit))
+            (expression
+                (string_lit))))
+        (expression
+        (ident)))))

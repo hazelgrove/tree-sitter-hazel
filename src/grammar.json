@@ -5,9 +5,26 @@
       "type": "SYMBOL",
       "name": "expression"
     },
-    "ident": {
-      "type": "PATTERN",
-      "value": "[A-Za-z][A-Za-z0-9_']*"
+    "user_hole": {
+      "type": "STRING",
+      "value": "?"
+    },
+    "filler_hole": {
+      "type": "STRING",
+      "value": "??"
+    },
+    "hole": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "user_hole"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "filler_hole"
+        }
+      ]
     },
     "expression": {
       "type": "CHOICE",
@@ -71,6 +88,23 @@
         {
           "type": "SYMBOL",
           "name": "nil_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hole"
+        }
+      ]
+    },
+    "ident": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[A-Za-z]([A-Za-z0-9_'\\.]*[A-Za-z0-9_'])?"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "filler_hole"
         }
       ]
     },
@@ -124,6 +158,10 @@
         {
           "type": "SYMBOL",
           "name": "nil_pat"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hole"
         }
       ]
     },
@@ -157,6 +195,10 @@
         {
           "type": "SYMBOL",
           "name": "array_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hole"
         }
       ]
     },
@@ -219,6 +261,23 @@
         {
           "type": "STRING",
           "value": ")"
+        }
+      ]
+    },
+    "list_type": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SYMBOL",
+          "name": "type"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
         }
       ]
     },
@@ -322,6 +381,10 @@
           "value": "]"
         }
       ]
+    },
+    "filler": {
+      "type": "STRING",
+      "value": "??"
     },
     "int_lit": {
       "type": "PATTERN",
@@ -1538,6 +1601,14 @@
     [
       "expression",
       "pat"
+    ],
+    [
+      "expression",
+      "ident"
+    ],
+    [
+      "hole",
+      "ident"
     ],
     [
       "tuple_pat",

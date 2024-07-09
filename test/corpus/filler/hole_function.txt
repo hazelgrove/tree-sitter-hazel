@@ -1,0 +1,52 @@
+================================================================================
+Hole Function
+================================================================================
+
+let List.length: [(String, Bool)] -> Int = 
+  fun xs -> ??
+in
+
+List.length([("hello", True), ("world", False)])
+
+--------------------------------------------------------------------------------
+(program
+	(expression
+		(let
+			(pat
+				(typeann
+					(pat
+					(ident))
+					(type
+					(arrow_type
+						(type
+						(array_type
+							(type
+							(tuple_type
+								(type)
+								(type)))))
+						(type)))))
+				(expression
+				(fun
+					(pat
+					(ident))
+					(expression
+					(hole
+						(filler_hole)))))
+				(expression
+				(ap
+					(expression
+					(ident))
+					(expression
+					(list_exp
+						(expression
+						(tuple_exp
+							(expression
+							(string_lit))
+							(expression
+							(ident))))
+						(expression
+						(tuple_exp
+							(expression
+							(string_lit))
+							(expression
+							(ident)))))))))))
