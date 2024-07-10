@@ -270,6 +270,10 @@
         {
           "type": "tuple_exp",
           "named": true
+        },
+        {
+          "type": "unary_exp",
+          "named": true
         }
       ]
     }
@@ -775,6 +779,21 @@
     }
   },
   {
+    "type": "neg",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "nil_exp",
     "named": true,
     "fields": {}
@@ -783,6 +802,21 @@
     "type": "nil_pat",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "not",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "pat",
@@ -1072,7 +1106,30 @@
     }
   },
   {
+    "type": "unary_exp",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "neg",
+          "named": true
+        },
+        {
+          "type": "not",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "\n",
+    "named": false
+  },
+  {
+    "type": "!",
     "named": false
   },
   {

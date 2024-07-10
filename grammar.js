@@ -48,6 +48,7 @@ module.exports = grammar({
             $.string_lit,
             $.tuple_exp,
             $.infix_exp,
+            $.unary_exp,
             $.fun,
             $.if,
             $.ap,
@@ -157,7 +158,8 @@ module.exports = grammar({
 
         nil_exp: $ => 'nil',
 
-        //infix expressions:
+        // infix expressions:
+
 
         infix_exp: $ => choice(
             $.plus,
@@ -370,14 +372,30 @@ module.exports = grammar({
             $.expression,
         )),
 
-        //tuple expressions:
+        // unary expressions:
+        unary_exp: $ => choice(
+            $.neg,
+            $.not,
+        ),
+
+        neg: $ => prec.right(7, seq(
+            '-',
+            $.expression,
+        )),
+
+        not: $ => prec.right(7, seq(
+            '!',
+            $.expression,
+        )),
+
+        // tuple expressions:
         tuple_exp: $ => seq(
             '(',
             commaSep($.expression),
             ')',
         ),
 
-        //let expressions & related:
+        // let expressions & related:
 
         let: $ => seq(
             'let',
@@ -388,7 +406,7 @@ module.exports = grammar({
             $.expression,
         ),
 
-        //ifs and realted:
+        // ifs and related:
         if: $ => seq(
             'if',
             $.expression,
@@ -398,7 +416,7 @@ module.exports = grammar({
             $.expression,
         ),
 
-        //functions and related
+        // functions and related
         fun: $ => seq(
             'fun',
             $.pat,
@@ -406,7 +424,7 @@ module.exports = grammar({
             $.expression,
         ),
 
-        //application
+        // application
         ap: $ => prec.left(1, seq(
             field("func", $.expression),
             '(',
@@ -414,7 +432,7 @@ module.exports = grammar({
             ')'
         )),
 
-        //cases and rules
+        // cases and rules
 
         case: $ => seq(
             'case',
@@ -433,7 +451,7 @@ module.exports = grammar({
 
         rule_exp_op: $ => token('=>'),
 
-        //patterns:
+        // patterns:
 
         typeann: $ => prec(11, seq(
             $.pat,

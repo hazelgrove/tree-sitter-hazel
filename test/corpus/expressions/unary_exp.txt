@@ -1,0 +1,13 @@
+=======
+Unary Expression
+=======
+
+- 1
+
+--------
+(program
+    (expression
+    (unary_exp
+        (neg
+        (expression
+            (int_lit))))))
